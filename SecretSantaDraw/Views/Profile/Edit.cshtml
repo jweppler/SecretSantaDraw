@@ -1,4 +1,6 @@
 ﻿@model SecretSantaDraw.Models.Profile
+@using SecretSantaDraw.Models
+@using SecretSantaDraw.HtmlHelperExtensions
 
 @{
     ViewBag.Title = "Edit";
@@ -20,6 +22,20 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.DisplayName)
             @Html.ValidationMessageFor(model => model.DisplayName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShirtSize)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownList("ShirtSize", Model.ShirtSize)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HatSize)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownList("HatSize", Model.HatSize)
         </div>
 
         <p>

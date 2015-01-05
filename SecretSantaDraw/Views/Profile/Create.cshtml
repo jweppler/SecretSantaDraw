@@ -1,4 +1,6 @@
-﻿@model SecretSantaDraw.Models.Profile
+﻿@using SecretSantaDraw.Models
+@using SecretSantaDraw.HtmlHelperExtensions
+@model SecretSantaDraw.Models.Profile
 
 @{
     ViewBag.Title = "Create";
@@ -20,7 +22,6 @@
             @Html.ValidationMessageFor(model => model.DisplayName)
         </div>
 
-<<<<<<< HEAD
         <div class="editor-label">
             @Html.LabelFor(model => model.ShirtSize)
         </div>
@@ -35,8 +36,6 @@
             @Html.EnumDropDownList("HatSize", HatSize.NotSpecified)
         </div>
 
-=======
->>>>>>> parent of 26ef03d... Added Drop Downs
         <p>
             <input type="submit" value="Create" />
         </p>
