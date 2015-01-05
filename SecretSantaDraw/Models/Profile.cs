@@ -1,16 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 
 namespace SecretSantaDraw.Models
 {
-    public enum HatSize {
-        [Display(Name="Not Specified")]
+
+    public class Profile
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int ProfileId { get; set; }
+
+        [Display(Name = "Display Name")]
+        [Required]
+        public string DisplayName { get; set; }
+
+        [Display(Name = "Email Address")]
+        [Required]
+        public string EmailAddress { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true, NullDisplayText = "Not Specified")]
+        [Display(Name = "Birth Date")]
+        public DateTime DOB { get; set; }
+
+        public GenderType Gender { get; set; }
+
+        [Display(Name = "Hat Size")]
+        public HatSize HatSize { get; set; }
+
+        [Display(Name = "Shirt Size")]
+        public ShirtSize ShirtSize { get; set; }
+
+        [Display(Name = "Shoe Size")]
+        public ShoeSize ShoeSize { get; set; }
+        
+    }
+
+    public enum GenderType
+    {
+        [Display(Name = "Not Specified")]
         NotSpecified,
-        [Display(Name="6 3/4")]
+        UnKnown,
+        Male,
+        Female
+    }
+
+    public enum ShirtSize
+    {
+        [Display(Name = "Not Specified")]
+        NotSpecified,
+        XS,
+        S,
+        M,
+        L,
+        XL,
+        XXL,
+        XXXL
+    };
+
+    public enum HatSize
+    {
+        [Display(Name = "Not Specified")]
+        NotSpecified,
+        [Display(Name = "6 3/4")]
         SixAndThreeQuarters,
         [Display(Name = "6 7/8")]
         SixAndSevenEighths,
@@ -30,28 +87,39 @@ namespace SecretSantaDraw.Models
         SevenAndThreeQuarters
     };
 
-    public enum ShirtSize {
+    public enum ShoeSize
+    {
         [Display(Name = "Not Specified")]
         NotSpecified,
-        XS,
-        S,
-        M,
-        L,
-        XL,
-        XXL,
-        XXXL
+        [Display(Name = "6")]
+        Six,
+        [Display(Name = "6.5")]
+        SixAndAHalf,
+        [Display(Name = "7")]
+        Seven,
+        [Display(Name = "7.5")]
+        SevenAndAHalf,
+        [Display(Name = "8")]
+        Eight,
+        [Display(Name = "8.5")]
+        EightAndAHalf,
+        [Display(Name = "9")]
+        Nine,
+        [Display(Name = "9.5")]
+        NinAndAHalf,
+        [Display(Name = "10")]
+        Ten,
+        [Display(Name = "10.5")]
+        TenAndAHalf,
+        [Display(Name = "11")]
+        Eleven,
+        [Display(Name = "11.5")]
+        ElevenAndAHalf,
+        [Display(Name = "12")]
+        Twelve,
+        [Display(Name = "12.5")]
+        TwelveAndAHalf,
+        [Display(Name = "13")]
+        Thirteen
     };
-
-
-    public class Profile
-    {
-        public int ProfileId { get; set; }
-
-        public string DisplayName { get; set; }
-
-        public HatSize HatSize { get; set; }
-
-        public ShirtSize ShirtSize { get; set; }
-        
-    }
 }
