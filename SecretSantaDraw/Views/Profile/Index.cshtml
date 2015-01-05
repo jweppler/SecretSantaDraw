@@ -29,10 +29,10 @@
             @Html.DisplayFor(modelItem => item.DisplayName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShirtSize)
+            @Html.EnumDisplayName("ShirtSize", item.ShirtSize)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HatSize)
+            @Html.EnumDisplayName("HatSize", item.HatSize)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProfileId }) |

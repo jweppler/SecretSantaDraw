@@ -1,4 +1,6 @@
-﻿@model SecretSantaDraw.Models.Profile
+﻿@using SecretSantaDraw.Models
+@using SecretSantaDraw.HtmlHelperExtensions
+@model SecretSantaDraw.Models.Profile
 
 @{
     ViewBag.Title = "Delete";
@@ -15,6 +17,18 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.DisplayName)
+    </div>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShirtSize)
+    </div>
+    <div class="display-field">
+        @Html.EnumDisplayName("ShirtSize", Model.ShirtSize)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HatSize)
+    </div>
+    <div class="display-field">
+        @Html.EnumDisplayName("HatSize", Model.HatSize)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {

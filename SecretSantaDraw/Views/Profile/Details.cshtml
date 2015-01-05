@@ -20,13 +20,13 @@
          @Html.DisplayNameFor(model => model.ShirtSize)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ShirtSize)
+        @Html.EnumDisplayName("ShirtSize", Model.ShirtSize)
     </div>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.HatSize)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.HatSize)
+        @Html.EnumDisplayName("HatSize", Model.HatSize)
     </div>
 </fieldset>
 <p>
