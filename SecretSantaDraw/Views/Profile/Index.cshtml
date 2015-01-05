@@ -15,10 +15,7 @@
             @Html.DisplayNameFor(model => model.DisplayName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShirtSize)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HatSize)
+            @Html.DisplayNameFor(model => model.EmailAddress)
         </th>
         <th></th>
     </tr>
@@ -26,17 +23,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DisplayName)
+            @Html.ActionLink(item.DisplayName, "Details", new { id = item.ProfileId})
         </td>
         <td>
-            @Html.EnumDisplayName("ShirtSize", item.ShirtSize)
-        </td>
-        <td>
-            @Html.EnumDisplayName("HatSize", item.HatSize)
+            @Html.EnumDisplayName("ShirtSize", item.EmailAddress)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProfileId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProfileId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProfileId })
         </td>
     </tr>

@@ -207,6 +207,18 @@ ul#menu {
 
 /* page elements
 ----------------------------------------------------------*/
+
+/* labels and fields*/
+
+.display-label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.display-field {
+    font-size: 1em;
+}
+
 /* featured */
 .featured {
     background-color: #fff;

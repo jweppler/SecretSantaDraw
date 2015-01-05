@@ -22,6 +22,29 @@
             @Html.ValidationMessageFor(model => model.DisplayName)
         </div>
 
+         <div class="editor-label">
+            @Html.LabelFor(model => model.EmailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailAddress)
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DOB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DOB)
+            @Html.ValidationMessageFor(model => model.DOB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Gender)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownList("GenderType", GenderType.NotSpecified)
+        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.ShirtSize)
         </div>
@@ -34,6 +57,13 @@
         </div>
         <div class="editor-field">
             @Html.EnumDropDownList("HatSize", HatSize.NotSpecified)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShoeSize)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownList("ShoeSize", ShoeSize.NotSpecified)
         </div>
 
         <p>
