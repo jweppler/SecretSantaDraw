@@ -14,12 +14,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DisplayName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShirtSize)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HatSize)
-        </th>
         <th></th>
     </tr>
 
@@ -29,12 +23,15 @@
             @Html.DisplayFor(modelItem => item.DisplayName)
         </td>
         <td>
+<<<<<<< HEAD
             @Html.EnumDisplayName("ShirtSize", item.ShirtSize)
         </td>
         <td>
             @Html.EnumDisplayName("HatSize", item.HatSize)
         </td>
         <td>
+=======
+>>>>>>> parent of 26ef03d... Added Drop Downs
             @Html.ActionLink("Edit", "Edit", new { id=item.ProfileId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProfileId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProfileId })

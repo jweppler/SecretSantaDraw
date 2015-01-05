@@ -1,5 +1,4 @@
 ﻿@model SecretSantaDraw.Models.Profile
-@using SecretSantaDraw.Models
 
 @{
     ViewBag.Title = "Details";
@@ -16,6 +15,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.DisplayName)
     </div>
+<<<<<<< HEAD
     <div class="display-label">
          @Html.DisplayNameFor(model => model.ShirtSize)
     </div>
@@ -28,6 +28,8 @@
     <div class="display-field">
         @Html.EnumDisplayName("HatSize", Model.HatSize)
     </div>
+=======
+>>>>>>> parent of 26ef03d... Added Drop Downs
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ProfileId }) |
