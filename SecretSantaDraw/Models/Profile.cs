@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 
 namespace SecretSantaDraw.Models
@@ -20,6 +17,7 @@ namespace SecretSantaDraw.Models
         public string DisplayName { get; set; }
 
         [Display(Name = "Email Address")]
+        [EmailAddress]
         [Required]
         public string EmailAddress { get; set; }
 
@@ -45,7 +43,6 @@ namespace SecretSantaDraw.Models
     {
         [Display(Name = "Not Specified")]
         NotSpecified,
-        UnKnown,
         Male,
         Female
     }
@@ -106,7 +103,7 @@ namespace SecretSantaDraw.Models
         [Display(Name = "9")]
         Nine,
         [Display(Name = "9.5")]
-        NinAndAHalf,
+        NineAndAHalf,
         [Display(Name = "10")]
         Ten,
         [Display(Name = "10.5")]

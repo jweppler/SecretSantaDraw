@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using SecretSantaDraw.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
 
 namespace SecretSantaDraw.HtmlHelperExtensions
 {
@@ -18,7 +15,7 @@ namespace SecretSantaDraw.HtmlHelperExtensions
             .Cast<TEnum>().Select(v => new SelectListItem
                 {
 
-                    Text = GetDisplayAttributeFrom(v, typeof(TEnum)),
+                    Text = GetDisplayAttributeFrom(v),
                     Value = v.ToString(),
                     Selected = (v.Equals(selectedValue))
                 });
@@ -31,20 +28,22 @@ namespace SecretSantaDraw.HtmlHelperExtensions
 
         public static MvcHtmlString EnumDisplayName<TEnum>(this HtmlHelper htmlHelper, string name, TEnum value)
         {
-            return new MvcHtmlString(GetDisplayAttributeFrom(value, typeof(TEnum)));
+            return new MvcHtmlString(GetDisplayAttributeFrom(value));
         }
 
-        public static string GetDisplayAttributeFrom<TEnum>(this TEnum value, Type type)
+        public static string GetDisplayAttributeFrom<TEnum>(this TEnum value)
         {
+            Type type = typeof (TEnum);
             string displayName = null;
             var attributes = new object[] { };
+
             var memberInfo = type.GetMember(value.ToString());
             if (memberInfo.Any())
                 attributes = memberInfo[0].GetCustomAttributes(typeof(DisplayAttribute), false);
             if (attributes.Any())
                 displayName = ((DisplayAttribute)attributes[0]).Name;
 
-            return displayName != null ? displayName : value.ToString();
+            return displayName ?? value.ToString();
         }
 
     }

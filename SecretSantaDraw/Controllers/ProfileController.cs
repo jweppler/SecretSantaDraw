@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SecretSantaDraw.Models;
 using SecretSantaDraw.DAL;
@@ -12,7 +8,7 @@ namespace SecretSantaDraw.Controllers
 {
     public class ProfileController : Controller
     {
-        private SecretSantaDrawContext db = new SecretSantaDrawContext();
+        private readonly SecretSantaDrawContext db = new SecretSantaDrawContext();
 
         //
         // GET: /Profile/
@@ -27,7 +23,7 @@ namespace SecretSantaDraw.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Profile profile = db.Profile.Find(id);
+            var profile = db.Profile.Find(id);
             if (profile == null)
             {
                 return HttpNotFound();

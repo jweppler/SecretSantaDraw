@@ -13,23 +13,42 @@
     <legend>Profile</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.DisplayName)
+         @Html.DisplayNameFor(model => model.DisplayName):
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.DisplayName)
     </div>
-     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ShirtSize)
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DOB):
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DOB)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gender):
+    </div>
+    <div class="display-field">
+        @Html.EnumDisplayName("GenderType", Model.Gender)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShirtSize):
     </div>
     <div class="display-field">
         @Html.EnumDisplayName("ShirtSize", Model.ShirtSize)
     </div>
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.HatSize)
+         @Html.DisplayNameFor(model => model.HatSize):
     </div>
     <div class="display-field">
         @Html.EnumDisplayName("HatSize", Model.HatSize)
     </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShoeSize):
+    </div>
+    <div class="display-field">
+        @Html.EnumDisplayName("ShoeSize", Model.ShoeSize)
+    </div>
+
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
