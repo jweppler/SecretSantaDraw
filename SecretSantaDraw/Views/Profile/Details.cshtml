@@ -46,8 +46,36 @@
     <div class="display-field">
         @Html.EnumDisplayName("ShoeSize", Model.ShoeSize)
     </div>
+    
+    <table>
+    @if (Model.WishList.Count > 0)
+    {
+        <th>Wish List</th>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Level of Desire</th>
+        </tr>
+    }
+    @foreach (var item in Model.WishList)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @Html.EnumDisplayName("DesireLevel", item.DesireLevel)
+            </td>
+        </tr>
+    }
+</table>
+
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ProfileId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit Profile", "Edit", new { id=Model.ProfileId }) |
+    @Html.ActionLink("Edit Wish List", "EditWishList", new { id=Model.ProfileId }) |
+    @Html.ActionLink("Back to Profiles", "Index")
 </p>

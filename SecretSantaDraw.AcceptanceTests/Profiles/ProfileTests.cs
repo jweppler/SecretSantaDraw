@@ -85,9 +85,11 @@ namespace SecretSantaDraw.AcceptanceTests.Profiles
             db.Profile.Add(profile);
             db.SaveChanges();
 
-            BrowserSession.Visit("/");
-            BrowserSession.ClickLink("Profiles");
-            BrowserSession.FindXPath("//tr/td[a=\"JW\"]/..", Options.First).ClickLink("Edit");
+            BrowserSession.Visit("/Profile/Edit/"+profile.ProfileId);
+
+//            BrowserSession.Visit("/");
+//            BrowserSession.ClickLink("Profiles");
+//            BrowserSession.FindXPath("//tr/td[a=\"JW\"]/..", Options.First).ClickLink("Edit");
 
             Assert.IsTrue(BrowserSession.FindField("DisplayName").HasValue("JW"));
             Assert.IsTrue(BrowserSession.FindField("EmailAddress").HasValue("JW@gmail.com"));

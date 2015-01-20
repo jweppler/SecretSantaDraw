@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 
 namespace SecretSantaDraw.Models
@@ -36,7 +37,8 @@ namespace SecretSantaDraw.Models
 
         [Display(Name = "Shoe Size")]
         public ShoeSize ShoeSize { get; set; }
-        
+
+        public virtual ICollection<WishItem> WishList { get; set; }       
     }
 
     public enum GenderType

@@ -1,0 +1,36 @@
+﻿@model SecretSantaDraw.Models.WishItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>WishItem</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Profile.DisplayName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Profile.DisplayName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.WishItemId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
