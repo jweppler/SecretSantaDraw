@@ -31,7 +31,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ProfileId }) |
-                @Html.ActionLink("Edit Wish List", "EditWishList", new { id = item.ProfileId }) |
+                @Html.ActionLink("Edit Wish List", "Create", "WishItem", new { profileId = item.ProfileId }, null) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ProfileId })
             </td>
         </tr>

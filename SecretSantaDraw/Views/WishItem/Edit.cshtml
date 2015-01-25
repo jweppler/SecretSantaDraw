@@ -47,9 +47,10 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Edit Wish List", "EditWishList", "Profile", new { id = Model.ProfileId }, null)
+    @Html.ActionLink("Back to Edit Wish List", "Create", new { profileId = Model.ProfileId })
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

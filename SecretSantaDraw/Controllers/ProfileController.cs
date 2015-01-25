@@ -108,40 +108,6 @@ namespace SecretSantaDraw.Controllers
             return RedirectToAction("Index");
         }
 
-        //
-        // GET: /Profile/EditWishList/5
-
-        public ActionResult EditWishList(int id = 0)
-        {
-            var profile = db.Profile.Find(id);
-            if (profile == null)
-            {
-                return HttpNotFound();
-            }
-            return View(profile);
-        }
-
-        //
-        // POST: /Profile/EditWishList/5
-        [HttpPost]
-        public ActionResult EditWishList(WishItem wishItem, int id=0)
-        {
-            Profile profile = db.Profile.Find(id);
-            if (profile == null)
-            {
-                return HttpNotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                wishItem.ProfileId = profile.ProfileId;
-                db.WishItem.Add(wishItem);
-                db.SaveChanges();
-                return RedirectToAction("EditWishList", new {id = id});
-            }
-            return View(profile);
-        }
-
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

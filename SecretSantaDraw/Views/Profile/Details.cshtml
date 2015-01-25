@@ -76,6 +76,6 @@
 </fieldset>
 <p>
     @Html.ActionLink("Edit Profile", "Edit", new { id=Model.ProfileId }) |
-    @Html.ActionLink("Edit Wish List", "EditWishList", new { id=Model.ProfileId }) |
+    @Html.ActionLink("Edit Wish List", "Create", "WishItem", new { profileId=Model.ProfileId }, null) |
     @Html.ActionLink("Back to Profiles", "Index")
 </p>

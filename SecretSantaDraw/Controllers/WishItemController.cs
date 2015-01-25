@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using SecretSantaDraw.Models;
 using SecretSantaDraw.DAL;
+using SecretSantaDraw.ViewModels;
 
 namespace SecretSantaDraw.Controllers
 {
@@ -39,28 +40,51 @@ namespace SecretSantaDraw.Controllers
         //
         // GET: /WishItem/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int profileId)
         {
-            ViewBag.ProfileId = new SelectList(db.Profile, "ProfileId", "DisplayName");
-            return View();
+            var profile = db.Profile.Find(profileId);
+            if (profile == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new WishItemListViewModel
+            {
+                ProfileId = profile.ProfileId,
+                ProfileDisplayName = profile.DisplayName,
+                WishList = profile.WishList
+            };
+            return View(viewModel);
         }
 
         //
         // POST: /WishItem/Create
 
         [HttpPost]
-        public ActionResult Create(WishItem wishitem)
+        public ActionResult Create(WishItem wishItem, int profileId = 0)
         {
-            if (ModelState.IsValid)
+            Profile profile = db.Profile.Find(profileId);
+            if (profile == null)
             {
-                db.WishItem.Add(wishitem);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return HttpNotFound();
             }
 
-            ViewBag.ProfileId = new SelectList(db.Profile, "ProfileId", "DisplayName", wishitem.ProfileId);
-            return View(wishitem);
+            if (ModelState.IsValid)
+            {
+                wishItem.ProfileId = profile.ProfileId;
+                db.WishItem.Add(wishItem);
+                db.SaveChanges();
+                return RedirectToAction("Create", new { profileId });
+            }
+
+            var viewModel = new WishItemListViewModel
+            {
+                ProfileId = profile.ProfileId,
+                ProfileDisplayName = profile.DisplayName,
+                WishList = profile.WishList
+            };
+            return View(viewModel);
         }
+
 
         //
         // GET: /WishItem/Edit/5
@@ -86,11 +110,12 @@ namespace SecretSantaDraw.Controllers
             {
                 db.Entry(wishitem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("EditWishList", "Profile", new { id = wishitem.ProfileId });
+                return RedirectToAction("Create", new { profileId = wishitem.ProfileId });
             }
             ViewBag.ProfileId = new SelectList(db.Profile, "ProfileId", "DisplayName", wishitem.ProfileId);
             return View(wishitem);
         }
+
 
         //
         // GET: /WishItem/Delete/5
@@ -114,7 +139,7 @@ namespace SecretSantaDraw.Controllers
             WishItem wishitem = db.WishItem.Find(id);
             db.WishItem.Remove(wishitem);
             db.SaveChanges();
-            return RedirectToAction("EditWishList", "Profile", new { id = wishitem.ProfileId });
+            return RedirectToAction("Edit", new { profileId = wishitem.ProfileId });
         }
 
         protected override void Dispose(bool disposing)

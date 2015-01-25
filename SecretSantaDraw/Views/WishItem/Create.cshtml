@@ -1,49 +1,46 @@
-﻿@model SecretSantaDraw.Models.WishItem
+﻿@model SecretSantaDraw.ViewModels.WishItemListViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit Wish List";
 }
 
-<h2>Create</h2>
+<h2>@Html.DisplayFor(model => model.ProfileDisplayName)</h2>
+<h3>Wish List </h3>
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+<table>
+    @if (Model.WishList.Count() > 0)
+    {
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Level of Desire</th>
+            <th></th>
+        </tr>
+    }
+    @foreach (var item in Model.WishList)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @Html.EnumDisplayName("DesireLevel", item.DesireLevel)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "WishItem", new { id = item.WishItemId }, null) |
+                @Html.ActionLink("Delete", "Delete", "WishItem", new { id = item.WishItemId }, null)
+            </td>
+        </tr>
+    }
+</table>
 
-    <fieldset>
-        <legend>WishItem</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProfileId, "Profile")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ProfileId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ProfileId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
+@Html.Partial("_AddWishItemPartial", model: new WishItem())
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Profile", "Details", "Profile", new{id = Model.ProfileId}, null)
 </div>
 
 @section Scripts {

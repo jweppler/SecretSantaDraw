@@ -12,7 +12,6 @@ namespace SecretSantaDraw.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int WishItemId { get; set; }
 
-        //[ForeignKey("ProfileId")]
         public int ProfileId { get; set; }
 
         [MaxLength(60)]
@@ -29,12 +28,12 @@ namespace SecretSantaDraw.Models
     public enum DesireLevel
     {
         [Display(Name="Kinda Want")]
-        Low,
+        Kinda_Want,
         [Display(Name="Want")]
-        Moderate,
+        Want,
         [Display(Name="Really Want")]
-        High,
+        Really_Want,
         [Display(Name="Must Have")]
-        MustHave
+        Must_Have
     }
 }
