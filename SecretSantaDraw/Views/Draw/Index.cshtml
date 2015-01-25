@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SecretSantaDraw.Models.Draw>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DrawDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpendLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner.DisplayName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrawDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpendLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.DisplayName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DrawId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DrawId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DrawId })
+        </td>
+    </tr>
+}
+
+</table>

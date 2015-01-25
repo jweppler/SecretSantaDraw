@@ -1,0 +1,36 @@
+﻿@model SecretSantaDraw.Models.Draw
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Draw</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DrawDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DrawDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SpendLimit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SpendLimit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Owner.DisplayName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Owner.DisplayName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DrawId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -9,6 +9,7 @@ namespace SecretSantaDraw.DAL
         public DbSet<Profile> Profile { get; set; }
         public DbSet<WishItem> WishItem { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Draw> Draws { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
