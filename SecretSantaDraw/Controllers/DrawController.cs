@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SecretSantaDraw.Models;
 using SecretSantaDraw.DAL;
@@ -12,19 +9,13 @@ namespace SecretSantaDraw.Controllers
 {
     public class DrawController : Controller
     {
-        private SecretSantaDrawContext db = new SecretSantaDrawContext();
-
-        //
-        // GET: /Draw/
+        private readonly SecretSantaDrawContext db = new SecretSantaDrawContext();
 
         public ActionResult Index()
         {
             var draws = db.Draws.Include(d => d.Owner);
             return View(draws.ToList());
         }
-
-        //
-        // GET: /Draw/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -36,17 +27,11 @@ namespace SecretSantaDraw.Controllers
             return View(draw);
         }
 
-        //
-        // GET: /Draw/Create
-
         public ActionResult Create(int profileId)
         {
             var draw = new Draw {OwnerId = profileId};
             return View(draw);
         }
-
-        //
-        // POST: /Draw/Create
 
         [HttpPost]
         public ActionResult Create(Draw draw)
@@ -60,9 +45,6 @@ namespace SecretSantaDraw.Controllers
             return View(draw);
         }
 
-        //
-        // GET: /Draw/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
             Draw draw = db.Draws.Find(id);
@@ -73,9 +55,6 @@ namespace SecretSantaDraw.Controllers
             ViewBag.OwnerId = new SelectList(db.Profile, "ProfileId", "DisplayName", draw.OwnerId);
             return View(draw);
         }
-
-        //
-        // POST: /Draw/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Draw draw)
@@ -90,9 +69,6 @@ namespace SecretSantaDraw.Controllers
             return View(draw);
         }
 
-        //
-        // GET: /Draw/Delete/5
-
         public ActionResult Delete(int id = 0)
         {
             Draw draw = db.Draws.Find(id);
@@ -102,9 +78,6 @@ namespace SecretSantaDraw.Controllers
             }
             return View(draw);
         }
-
-        //
-        // POST: /Draw/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

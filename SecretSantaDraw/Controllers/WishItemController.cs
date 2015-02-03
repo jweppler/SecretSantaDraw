@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SecretSantaDraw.Models;
 using SecretSantaDraw.DAL;
@@ -15,17 +12,11 @@ namespace SecretSantaDraw.Controllers
     {
         private SecretSantaDrawContext db = new SecretSantaDrawContext();
 
-        //
-        // GET: /WishItem/
-
         public ActionResult Index()
         {
             var wishitem = db.WishItem.Include(w => w.Profile);
             return View(wishitem.ToList());
         }
-
-        //
-        // GET: /WishItem/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -36,9 +27,6 @@ namespace SecretSantaDraw.Controllers
             }
             return View(wishitem);
         }
-
-        //
-        // GET: /WishItem/Create
 
         public ActionResult Create(int profileId)
         {
@@ -55,9 +43,6 @@ namespace SecretSantaDraw.Controllers
             };
             return View(viewModel);
         }
-
-        //
-        // POST: /WishItem/Create
 
         [HttpPost]
         public ActionResult Create(WishItem wishItem, int profileId = 0)
@@ -85,10 +70,6 @@ namespace SecretSantaDraw.Controllers
             return View(viewModel);
         }
 
-
-        //
-        // GET: /WishItem/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
             WishItem wishitem = db.WishItem.Find(id);
@@ -99,9 +80,6 @@ namespace SecretSantaDraw.Controllers
             ViewBag.ProfileId = new SelectList(db.Profile, "ProfileId", "DisplayName", wishitem.ProfileId);
             return View(wishitem);
         }
-
-        //
-        // POST: /WishItem/Edit/5
 
         [HttpPost]
         public ActionResult Edit(WishItem wishitem)
@@ -116,10 +94,6 @@ namespace SecretSantaDraw.Controllers
             return View(wishitem);
         }
 
-
-        //
-        // GET: /WishItem/Delete/5
-
         public ActionResult Delete(int id = 0)
         {
             WishItem wishitem = db.WishItem.Find(id);
@@ -129,9 +103,6 @@ namespace SecretSantaDraw.Controllers
             }
             return View(wishitem);
         }
-
-        //
-        // POST: /WishItem/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

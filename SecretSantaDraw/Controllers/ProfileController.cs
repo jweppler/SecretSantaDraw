@@ -10,16 +10,10 @@ namespace SecretSantaDraw.Controllers
     {
         private readonly SecretSantaDrawContext db = new SecretSantaDrawContext();
 
-        //
-        // GET: /Profile/
-
         public ActionResult Index()
         {
             return View(db.Profile.ToList());
         }
-
-        //
-        // GET: /Profile/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -31,16 +25,10 @@ namespace SecretSantaDraw.Controllers
             return View(profile);
         }
 
-        //
-        // GET: /Profile/Create
-
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /Profile/Create
 
         [HttpPost]
         public ActionResult Create(Profile profile)
@@ -55,9 +43,6 @@ namespace SecretSantaDraw.Controllers
             return View(profile);
         }
 
-        //
-        // GET: /Profile/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
             Profile profile = db.Profile.Find(id);
@@ -67,9 +52,6 @@ namespace SecretSantaDraw.Controllers
             }
             return View(profile);
         }
-
-        //
-        // POST: /Profile/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Profile profile)
@@ -83,9 +65,6 @@ namespace SecretSantaDraw.Controllers
             return View(profile);
         }
 
-        //
-        // GET: /Profile/Delete/5
-
         public ActionResult Delete(int id = 0)
         {
             Profile profile = db.Profile.Find(id);
@@ -95,9 +74,6 @@ namespace SecretSantaDraw.Controllers
             }
             return View(profile);
         }
-
-        //
-        // POST: /Profile/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
